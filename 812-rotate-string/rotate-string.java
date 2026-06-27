@@ -6,6 +6,7 @@ class Solution {
 
         String str = s + s;
 
+        //Check that goal is exist in the str
         if(str.contains(goal)){
             return true;
         }
