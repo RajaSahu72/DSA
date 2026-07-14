@@ -1,5 +1,5 @@
 class Solution {
-    public void sortColors(int[] nums) {
+    public void sortColors(int[] nums) { // O(n) - with 2 pass
         int n = nums.length;
         int count0 = 0, count1 = 0, count2 = 0;
 
