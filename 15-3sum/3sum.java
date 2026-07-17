@@ -5,6 +5,7 @@ class Solution {
 
         for(int i = 0; i<nums.length; i++){
 
+            // Skip duplicate first elements
             if(i>0 && nums[i] == nums[i-1]) continue;
 
             // Two Pointers
@@ -24,10 +25,12 @@ class Solution {
                     ans.add(Arrays.asList(nums[i],nums[j],nums[k]));
                     j++; k--;
 
+                    // Skip duplicates for j
                     while(j<k && nums[j] == nums[j-1]){
                         j++;
                     }
 
+                    // Skip duplicates for k
                     while(j<k && nums[k] == nums[k+1]){
                         k--;
                     }
