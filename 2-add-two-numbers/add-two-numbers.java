@@ -35,6 +35,6 @@ class Solution {
             }
         }
 
-        return dummy.next;
+        return dummy.next; 
     }
 }
