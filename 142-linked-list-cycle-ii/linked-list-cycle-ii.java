@@ -12,7 +12,6 @@
 public class Solution {
     public ListNode detectCycle(ListNode head) {
 
-        // Detect Cycle
         ListNode slow = head;
         ListNode fast = head;
 
@@ -21,24 +20,16 @@ public class Solution {
             fast = fast.next.next;
 
             if(slow == fast){
-                break;
+                slow = head;
+
+                while(slow != fast){
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
             }
         }
 
-
-        // No Cycle found
-        if(fast == null || fast.next == null){
-            return null;
-        }
-
-
-        // find meeting point         
-        slow = head;
-        while(slow != fast){
-            slow = slow.next;
-            fast = fast.next;
-        }
-
-        return slow;
+        return null;
     }
 }
