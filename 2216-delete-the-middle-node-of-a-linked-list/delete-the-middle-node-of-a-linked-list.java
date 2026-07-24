@@ -21,8 +21,10 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-
+        
+        // Delete the middle node 
         prev.next = slow.next;
+
         return dummy.next;
     }
 }
