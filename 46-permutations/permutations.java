@@ -1,28 +1,33 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        permuteHelper(nums, 0, res);
+        getPerms(nums, 0, res);
         return res;
     }
 
-    private void permuteHelper(int[] nums, int i, List<List<Integer>> res) {
-        if (i == nums.length) {
-            List<Integer> permutation = new ArrayList<>();
-            for (int num : nums) permutation.add(num);
-            res.add(permutation);
+    private void getPerms(int nums[], int idx, List<List<Integer>> res){
+
+        if (idx == nums.length) {
+            List<Integer> curr = new ArrayList<>();
+            for (int num : nums) {
+                curr.add(num);
+            }
+            res.add(curr);
             return;
         }
 
-        for (int j = i; j < nums.length; j++) {
-            swap(nums, i, j);
-            permuteHelper(nums, i + 1, res);
-            swap(nums, i, j); // backtrack
+
+        for(int i = idx; i<nums.length; i++){
+            swap(nums, i, idx);
+            getPerms(nums, idx+1, res);
+            
+            swap(nums, i, idx);  // Backtrack
         }
     }
 
     private void swap(int[] nums, int i, int j) {
-        int tmp = nums[i];
+        int temp = nums[i];
         nums[i] = nums[j];
-        nums[j] = tmp;
+        nums[j] = temp;
     }
 }
