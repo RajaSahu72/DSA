@@ -17,16 +17,16 @@ class Solution {
         while(l1 != null || l2 != null || carry != 0){
             int x = (l1 != null) ? l1.val : 0;
             int y = (l2 != null) ? l2.val : 0;
-            int sum = x + y + carry;
 
-            int digit = sum%10;
+            int sum = x + y + carry;
+            int digit = sum % 10;
             carry = sum/10;
 
             ListNode newNode = new ListNode(digit);
             curr.next = newNode;
             curr = curr.next;
 
-            if(l1 != null) {
+            if(l1 != null){
                 l1 = l1.next;
             }
 
@@ -35,6 +35,6 @@ class Solution {
             }
         }
 
-        return dummy.next; 
+        return dummy.next;
     }
 }
