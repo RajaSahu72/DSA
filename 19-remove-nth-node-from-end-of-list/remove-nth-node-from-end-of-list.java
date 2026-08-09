@@ -17,18 +17,17 @@ class Solution {
             fast = fast.next;
         }
 
-        // size = n
         if(fast == null){
             return head.next;
         }
-
+        
         while(fast.next != null){
             slow = slow.next;
             fast = fast.next;
-        }
+        }     
 
-        slow.next = slow.next.next; // delete
+        slow.next = slow.next.next;
 
-        return head;
+        return head;   
     }
 }
