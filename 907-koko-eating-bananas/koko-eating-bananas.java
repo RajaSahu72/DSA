@@ -1,14 +1,4 @@
 class Solution {
-    private int findMax(int piles[]){
-        int max = 0;
-
-        for(int i = 0; i<piles.length; i++){
-            max = Math.max(max, piles[i]);
-        }
-
-        return max;
-    }
-    
     public int minEatingSpeed(int[] piles, int h) {
         int low = 1;
         int high = findMax(piles);
@@ -39,4 +29,15 @@ class Solution {
 
         return totalH;
     }
+
+    private int findMax(int piles[]){
+        int max = 0;
+
+        for(int i = 0; i<piles.length; i++){
+            max = Math.max(max, piles[i]);
+        }
+
+        return max;
+    }
+    
 }
