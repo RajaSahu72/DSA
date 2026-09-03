@@ -11,9 +11,9 @@
 class Solution {
     public void reorderList(ListNode head) {
 
-        // Step1 - Find the mid
+        // Step 1 - Find mid
         ListNode slow = head;
-        ListNode fast = head;
+        ListNode fast = head.next;
 
         while(fast != null && fast.next != null){
             slow = slow.next;
@@ -22,35 +22,33 @@ class Solution {
 
         ListNode mid = slow;
 
-
-        // Step2 - Reverse 2nd half
-        ListNode curr = mid.next;
-        mid.next = null;
+        // Step 2 - Reverse Second half
         ListNode prev = null;
+        ListNode curr = mid;
+        ListNode next;
 
         while(curr != null){
-            ListNode next = curr.next;
+            next = curr.next;
             curr.next = prev;
 
             prev = curr;
             curr = next;
         }
 
-        // Alternate Merge
-        ListNode leftHead = head;
-        ListNode rightHead = prev;
-        ListNode nextLeft;
-        ListNode nextRight;
-        
-        while(leftHead != null && rightHead != null){
-            nextLeft = leftHead.next;
-            leftHead.next = rightHead;
+        // Alternative Merge
+        ListNode lH = head;
+        ListNode rH = prev;
+        ListNode nextL, nextR;
 
-            nextRight = rightHead.next;
-            rightHead.next = nextLeft;
+        while(lH != null && rH != null){
+            nextL = lH.next;
+            lH.next = rH;
 
-            leftHead = nextLeft;
-            rightHead = nextRight;
+            nextR = rH.next;
+            rH.next = nextL;
+
+            lH = nextL;
+            rH = nextR;
         }
 
     }
