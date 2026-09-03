@@ -6,10 +6,9 @@ class Solution {
             for(int j = i+1; j<n; j++){
                 int sum = nums[i] + nums[j];
                 if(sum == target){
-                    return new int[]{i,j};
+                    return new int[]{i, j};
                 }
             }
-            
         }
 
         return new int[]{-1, -1};
