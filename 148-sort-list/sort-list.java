@@ -13,19 +13,51 @@ class Solution {
         if(head == null || head.next == null){
             return head;
         }
+        ListNode mid = findMid(head);
 
-        ListNode mid = getMid(head);
-
-        ListNode rightHead = mid.next;
+        ListNode leftH = head;
+        ListNode rightH = mid.next;
         mid.next = null;
 
-        ListNode newLeft = sortList(head);
-        ListNode newRight = sortList(rightHead);
+        ListNode newLeft = sortList(leftH);
+        ListNode newRight = sortList(rightH);
 
         return merge(newLeft, newRight);
     }
 
-    private ListNode getMid(ListNode head){
+
+    private ListNode merge(ListNode h1, ListNode h2){
+        ListNode mergedLL = new ListNode(-1);
+        ListNode temp = mergedLL;
+
+        while(h1 != null && h2 != null){
+            if(h1.val < h2.val){
+                temp.next = h1;
+                h1 = h1.next;
+            }
+            else{
+                temp.next = h2;
+                h2 = h2.next;
+            }
+            temp = temp.next;
+        }
+
+        while(h1 != null){
+            temp.next = h1;
+            h1 = h1.next;
+            temp = temp.next;
+        }
+
+        while(h2 != null){
+            temp.next = h2;
+            h2 = h2.next;
+            temp = temp.next;
+        }
+
+        return mergedLL.next;
+    }
+
+    private ListNode findMid(ListNode head){
         ListNode slow = head;
         ListNode fast = head.next;
 
@@ -37,36 +69,5 @@ class Solution {
         return slow;
     }
 
-    private ListNode merge(ListNode head1, ListNode head2){
 
-        ListNode mergedLL = new ListNode(-1);
-        ListNode temp = mergedLL;
-
-        while(head1 != null && head2 != null){
-            if(head1.val <= head2.val){
-                temp.next = head1;
-                head1 = head1.next;
-                temp = temp.next;
-            }
-            else{
-                temp.next = head2;
-                head2 = head2.next;
-                temp = temp.next;
-            }
-        }
-
-        while(head1 != null){
-            temp.next = head1;
-            head1 = head1.next;
-            temp = temp.next;
-        }
-
-        while(head2 != null){
-            temp.next = head2;
-            head2 = head2.next;
-            temp = temp.next;
-        }
-
-        return mergedLL.next;
-    }
 }
