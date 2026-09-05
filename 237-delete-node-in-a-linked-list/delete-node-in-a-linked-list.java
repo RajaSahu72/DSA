@@ -8,10 +8,7 @@
  */
 class Solution {
     public void deleteNode(ListNode node) {
-        // Copy Next Node value to current Node
         node.val = node.next.val;
-
-        // Skip the next Node
         node.next = node.next.next;
     }
 }
