@@ -13,29 +13,29 @@ class Solution {
         if(head == null || head.next == null){
             return head;
         }
-        
-        //Calculate the length of the LL
-        int length = 1;
+        // Step 1 -> Find length and tail of the LL
         ListNode tail = head;
+        int n = 1;
+
         while(tail.next != null){
-            length++;
             tail = tail.next;
+            n++;
         }
 
-        if(k % length == 0) return head;
+        // Avoid unneccesary condtions
+        k = k % n;
+        if(k == 0) return head;
 
-        k = k % length;
-
-        // Making list circular
+        // Step 2 -> Make the LL circular
         tail.next = head;
 
-        //Find the newTail and newHead
-        int stepsToNewHead = length - k;
+        // Step 3 -> Find newTail & newHead
         ListNode newTail = head;
-        for(int i = 1; i<stepsToNewHead; i++){
+
+        for(int i = 1; i< n-k; i++){
             newTail = newTail.next;
         }
-        
+
         ListNode newHead = newTail.next;
         newTail.next = null;
 
