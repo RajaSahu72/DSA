@@ -10,33 +10,28 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
+        /*=============== One Pass Approach ===================== */
 
-        // Step 1 - Find length of the LL
-        ListNode curr = head;
-        int size = 0;
-        while(curr != null){
-            curr = curr.next;
-            size++;
-        }
-
-        // Step 2 - Find kth node from begining
+        // Step 1 - Find kth node from the begining
         ListNode first = head;
         for(int i = 1; i<k; i++){
             first = first.next;
         }
 
-        // Step 3 - Find kth node from end
+        // Step 2 - Find kth node from the end
+        ListNode fast = first;
         ListNode second = head;
-        for(int i = 1; i<size-k+1; i++){
+
+        while(fast.next != null){
+            fast = fast.next;
             second = second.next;
         }
 
-        // Step 4 - Swap values
+        // Swapping Values
         int temp = first.val;
         first.val = second.val;
         second.val = temp;
 
         return head;
     }
-    
 }
