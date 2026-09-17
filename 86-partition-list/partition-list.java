@@ -10,15 +10,14 @@
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-        // Two dummy nodes
-        ListNode smallDummy = new ListNode(0);
-        ListNode largeDummy = new ListNode(0);
+        ListNode smallDummy = new ListNode(-1);
+        ListNode largeDummy = new ListNode(-1);
 
-        // Two ptr pointing to dummy nodes
         ListNode small = smallDummy;
         ListNode large = largeDummy;
 
         ListNode temp = head;
+
         while(temp != null){
             if(temp.val < x){
                 small.next = temp;
@@ -28,13 +27,11 @@ class Solution {
                 large.next = temp;
                 large = large.next;
             }
-
             temp = temp.next;
         }
 
         large.next = null;
         small.next = largeDummy.next;
-
 
         return smallDummy.next;
     }
