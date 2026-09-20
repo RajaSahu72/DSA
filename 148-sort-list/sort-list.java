@@ -14,7 +14,6 @@ class Solution {
             return head;
         }
         ListNode mid = findMid(head);
-
         ListNode leftH = head;
         ListNode rightH = mid.next;
         mid.next = null;
@@ -25,32 +24,31 @@ class Solution {
         return merge(newLeft, newRight);
     }
 
-
-    private ListNode merge(ListNode h1, ListNode h2){
+    private ListNode merge(ListNode l1, ListNode l2){
         ListNode mergedLL = new ListNode(-1);
         ListNode temp = mergedLL;
 
-        while(h1 != null && h2 != null){
-            if(h1.val < h2.val){
-                temp.next = h1;
-                h1 = h1.next;
+        while(l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                temp.next = l1;
+                l1 = l1.next;
             }
             else{
-                temp.next = h2;
-                h2 = h2.next;
+                temp.next = l2;
+                l2 = l2.next;
             }
             temp = temp.next;
         }
 
-        while(h1 != null){
-            temp.next = h1;
-            h1 = h1.next;
+        while(l1 != null){
+            temp.next = l1;
+            l1 = l1.next;
             temp = temp.next;
         }
 
-        while(h2 != null){
-            temp.next = h2;
-            h2 = h2.next;
+        while(l2 != null){
+            temp.next = l2;
+            l2 = l2.next;
             temp = temp.next;
         }
 
@@ -68,6 +66,4 @@ class Solution {
 
         return slow;
     }
-
-
 }
