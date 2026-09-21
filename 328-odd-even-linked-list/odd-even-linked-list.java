@@ -13,7 +13,7 @@ class Solution {
         if(head == null || head.next == null){
             return head;
         }
-        
+
         ListNode odd = head;
         ListNode even = head.next;
         ListNode evenH = head.next;
@@ -24,6 +24,7 @@ class Solution {
 
             even.next = even.next.next;
             even = even.next;
+
         }
         odd.next = evenH;
 
