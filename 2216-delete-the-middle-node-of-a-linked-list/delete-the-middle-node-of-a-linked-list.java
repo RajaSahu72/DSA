@@ -13,6 +13,7 @@ class Solution {
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
         ListNode prev = dummy;
+        
         ListNode slow = head;
         ListNode fast = head;
 
@@ -21,10 +22,10 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-        
-        // Delete the middle node 
-        prev.next = slow.next;
+
+        prev.next = prev.next.next;
 
         return dummy.next;
+
     }
 }
