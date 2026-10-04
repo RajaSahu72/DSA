@@ -1,9 +1,6 @@
 class Solution {
     public int[] sortArray(int[] nums) {
-        int si = 0;
-        int ei = nums.length-1;
-
-        mergeSort(nums, si, ei);
+        mergeSort(nums, 0, nums.length-1);
         return nums;
     }
 
@@ -12,7 +9,7 @@ class Solution {
             return;
         }
 
-        int mid = si + (ei-si)/2;
+        int mid = si + (ei - si)/2;
 
         mergeSort(nums, si, mid);
         mergeSort(nums, mid+1, ei);
@@ -30,12 +27,13 @@ class Solution {
             if(nums[i] < nums[j]){
                 temp[k] = nums[i];
                 i++;
+                k++;
             }
             else{
                 temp[k] = nums[j];
                 j++;
+                k++;
             }
-            k++;
         }
 
         while(i <= mid){
@@ -43,16 +41,17 @@ class Solution {
             i++;
             k++;
         }
-
         while(j <= ei){
             temp[k] = nums[j];
             j++;
             k++;
         }
 
-        for(k = 0, i = si; k<temp.length; i++, k++){
+
+        for(i = si, k = 0; k<temp.length; i++,k++){
             nums[i] = temp[k];
         }
 
     }
+
 }
