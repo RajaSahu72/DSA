@@ -1,12 +1,14 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int n = nums.length;
+
         int first = findFirst(nums, n, target);
-        if(first == -1) return new int[]{-1, -1};
+        if(first == -1) return new int[]{-1,-1};
 
         int last = findLast(nums, n, target);
 
         return new int[]{first, last};
+
     }
 
     private int findFirst(int nums[], int n, int target){
@@ -15,7 +17,7 @@ class Solution {
         int first = -1;
 
         while(low <= high){
-            int mid = (low + high)/2;
+            int mid = low + (high - low)/2;
 
             if(nums[mid] == target){
                 first = mid;
@@ -37,7 +39,7 @@ class Solution {
         int last = -1;
 
         while(low <= high){
-            int mid = (low + high)/2;
+            int mid = low + (high - low)/2;
 
             if(nums[mid] == target){
                 last = mid;
