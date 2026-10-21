@@ -1,6 +1,5 @@
 class Solution {
     public int majorityElement(int[] nums) {
-   
         int freq = 0;
         int ans = 0;
 
@@ -8,7 +7,7 @@ class Solution {
             if(freq == 0){
                 ans = nums[i];
             }
-            
+
             if(ans == nums[i]){
                 freq++;
             }
@@ -18,8 +17,5 @@ class Solution {
         }
 
         return ans;
-
-        
     }
-
 }
