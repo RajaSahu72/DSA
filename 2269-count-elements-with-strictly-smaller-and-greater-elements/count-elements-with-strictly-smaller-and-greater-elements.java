@@ -10,7 +10,7 @@ class Solution {
 
         int count = 0;
         for(int i = 0; i<nums.length; i++){
-            if(min < nums[i] && nums[i] < max){
+            if(nums[i] > min && nums[i] < max){
                 count++;
             }
         }
