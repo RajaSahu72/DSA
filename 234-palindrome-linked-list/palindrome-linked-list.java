@@ -21,7 +21,7 @@ class Solution {
             prev = curr;
             curr = next;
         }
-        
+
         ListNode left = head;
         ListNode right = prev;
 
@@ -29,21 +29,23 @@ class Solution {
             if(left.val != right.val){
                 return false;
             }
+
             left = left.next;
             right = right.next;
         }
-
         return true;
+        
     }
 
     private ListNode findMid(ListNode head){
-       ListNode slow = head;
-       ListNode fast = head;
+        ListNode slow = head;
+        ListNode fast = head;
 
-       while(fast != null && fast.next != null){
+        while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
-       }
-       return slow;
+        }
+
+        return slow;
     }
 }
