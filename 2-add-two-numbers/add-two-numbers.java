@@ -15,22 +15,20 @@ class Solution {
         int carry = 0;
 
         while(l1 != null || l2 != null || carry != 0){
-            int x = (l1 != null) ? l1.val : 0; 
+            int x = (l1 != null) ? l1.val : 0;
             int y = (l2 != null) ? l2.val : 0;
 
             int sum = x + y + carry;
             int digit = sum % 10;
-
             carry = sum / 10;
 
             ListNode newNode = new ListNode(digit);
-            temp.next = newNode; 
+            temp.next = newNode;
             temp = temp.next;
 
             if(l1 != null){
                 l1 = l1.next;
             }
-
             if(l2 != null){
                 l2 = l2.next;
             }
