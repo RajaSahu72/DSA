@@ -28,11 +28,9 @@ class Solution {
                 large = large.next;
             }
             temp = temp.next;
+            large.next = null;
+            small.next = largeDummy.next;
         }
-
-        large.next = null;
-        small.next = largeDummy.next;
-
         return smallDummy.next;
     }
 }
